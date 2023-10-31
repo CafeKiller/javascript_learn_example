@@ -6,32 +6,12 @@ class CommentInput extends Component {
     static propTypes = {
         onSubmit: PropTypes.func
     }
-
     constructor() {
         super();
         this.state = {
             username: "",
             content: ""
         }
-    }
-
-    handleUsernameChange(event) {
-        this.setState({
-            username: event.target.value
-        })
-    }
-    handleContentChange(event) {
-        this.setState({
-            content: event.target.value
-        })
-    }
-    // 处理提交
-    handleSubmit() {
-        if (this.props.onSubmit) {
-            const {username, content} = this.state
-            this.props.onSubmit({username, content})
-        }
-        this.setState({content: ""})
     }
     // 组件挂载完成
     componentDidMount() {
@@ -49,6 +29,28 @@ class CommentInput extends Component {
     }
     _saveUsername(username){
         localStorage.setItem("username", username)
+    }
+
+    handleUsernameChange(event) {
+        this.setState({
+            username: event.target.value
+        })
+    }
+    handleContentChange(event) {
+        this.setState({
+            content: event.target.value
+        })
+    }
+    // 处理提交
+    handleSubmit() {
+        if (this.props.onSubmit) {
+            this.props.onSubmit({
+                username: this.state.username,
+                content: this.state.content,
+                createTime: + new Date()
+            })
+        }
+        this.setState({content: ""})
     }
     handleUsernameBlur(event){
         this._saveUsername(event.target.value)
