@@ -1,0 +1,22 @@
+{
+  "name": "@mmo-rpg/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "gen-grpc": "mkdirp ./common/idl/auto-gen-grpc && cd common/idl/grpc && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:../auto-gen-grpc --grpc_out=grpc_js:../auto-gen-grpc --ts_out=grpc_js:../auto-gen-grpc ./*.proto",
+    "gen-ws": "mkdirp ./common/idl/auto-gen-ws && pbjs -t json-module -w commonjs -o ./common/idl/auto-gen-ws/index.js ./common/idl/ws/*.proto",
+    "gen-link": "ts-node ./common/idl/link.ts",
+    "auth": "ts-node ./auth/index",
+    "game": "ts-node ./game/index",
+    "gateway": "ts-node ./gateway/index",
+    "scene": "ts-node ./scene/index",
+    "replication": "ts-node ./replication/index",
+    "common": "yarn gen-grpc && yarn gen-ws && yarn gen-link",
+    "start": "yarn common && concurrently \"yarn game\" \"yarn replication\" \"yarn scene\" \"yarn gateway\" \"yarn auth\" -n game,replication,scene,gateway,auth -p {time}-{name}",
+    "deploy": "yarn common && tsc && pm2 start ./auth/index.js  --restart-delay=3000 -n auth --time  && pm2 start ./game/index.js --restart-delay=3000 -n game --time && pm2 start ./gateway/index.js --restart-delay=3000 -n gateway --time && pm2 start ./scene/scene/scene1.js --restart-delay=3000 -n scene1 --time && pm2 start ./scene/scene/Scene2.js --restart-delay=3000 -n scene2 --time && pm2 start ./replication/index.js --restart-delay=3000 -n replica --time",
+    "test": "ts-node ./test/index.ts"
+  },
+  "author": "CoffeeKiller",
+  "license": "ISC"
+}
