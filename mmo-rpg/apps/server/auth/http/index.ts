@@ -10,6 +10,7 @@ import {Logger} from "../../common/core/Logger";
 import {verifyAndParse} from "./middleware";
 import {createRes, md5} from "./utils";
 import {CodeEnum} from "./enum";
+import {ServerPort} from "../../common/common/enum";
 
 export const cache: Map<string, string> = new Map<string, string>()
 
@@ -69,6 +70,8 @@ export const httpStart = async () => {
         )
     })
 
-    // app.listen(Server)
+    app.listen(ServerPort.AuthHttp, () => {
+        logger.info("Auth HTTP服务启动")
+    })
 
 }
