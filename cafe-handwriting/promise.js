@@ -1,37 +1,101 @@
-Promise.myAll = (promises) => {
-    return new Promise((rs, rj) => {
-        let count = 0
-        let result = []
-        const len = promises.length
+class MyPromise {
+    constructor(exe) {
+        this.value = undefined
+        this.status = "pending"
+        this.successQueue = []
+        this.failureQueue = []
 
-        promises.forEach((p, i) => {
-            Promise.resolve(p).then((res) => {
-                count += 1
-                result[i] = res
-                if (count === len) {
-                    rs(result)
+        const resolve = () => {
+            const doResolve = (value) => {
+                if (this.status === "pending"){
+                    this.status = "success"
+                    this.value = value
+
+                    while(this.successQueue.length){
+                        const cb = this.successQueue.shift()
+                        cb && cb(this.value)
+                    }
                 }
-            }).catch(rj)
-        })
+            }
 
-    })
+            setTimeout(doResolve, 0)
+        }
+
+
+        const reject = () => {
+            const doReject = (value) => {
+                if (this.status === "pending") {
+                    this.status = "failure"
+                    this.value = value
+
+                    while(this.failureQueue.length){
+                        const cb = this.failureQueue.shift()
+                        cb && cb(this.value)
+                    }
+                }
+            }
+            setTimeout(doReject, 0)
+        }
+
+        exe(resolve, reject)
+
+    }
+
+    then(success=(value)=>value, failure = (value) => value) {
+        return new MyPromise((resolve, reject)=> {
+            const successFn = (value) => {
+                try {
+                    const result = success(value)
+                    result instanceof MyPromise ? result.then(resolve, reject) : resolve(result)
+                } catch (err) {
+                    reject(err)
+                }
+            }
+
+            const failureFn = (value) => {
+                try {
+                    const result = failure(value)
+                    result instanceof MyPromise ? result.then(resolve, reject) : resolve(result)
+                } catch (err) {
+                    reject(err)
+                }
+            }
+
+            if (this.status === "pending") {
+                this.successQueue.push(successFn)
+                this.failureQueue.push(failureFn)
+            } else if (this.status === "success") {
+                success(this.value)
+            } else {
+                failure(this.value)
+            }
+
+        })
+    }
+
+    catch() {
+
+    }
 }
 
-let p1 = Promise.resolve()
-let p2 = 2
-let p3 = new Promise((resolve, reject) => {
-    setTimeout(resolve, 100, 3)
-})
-let p4 = Promise.reject("出错了")
-
-Promise.myAll([p1, p2, p3]).then((res)=>{
-    console.log(res)
-}).catch((err)=>{
-    console.log("error", err)
+const pro = new MyPromise((resolve, reject) => {
+    setTimeout(resolve, 1000)
+    setTimeout(reject, 2000)
 })
 
-Promise.myAll([p1, p2, p4]).then((res)=>{
-    console.log(res)
-}).catch((err)=>{
-    console.log("error", err)
-})
+pro.then(() => {
+    console.log("2_1")
+    const newPro = new MyPromise((resolve, reject) => {
+        console.log("2_2")
+        setTimeout(reject, 2000)
+    })
+    console.log("2_3")
+    return newPro
+}).then(
+    () => {
+        console.log("2_4")
+    },
+    () => {
+        console.log("2_5")
+    }
+)
