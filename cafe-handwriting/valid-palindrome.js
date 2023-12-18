@@ -13,3 +13,36 @@ const isPalindrome = (str) => {
     return true
 }
 
+
+
+const validPalindrome = (s) => {
+    const isPalindrome = (start, end) => {
+        while(start < end) {
+            if(s[start] !== s[end]) {
+                return false
+            }
+            start++
+            end--
+        }
+        return true
+    }
+
+    let i = 0
+    let j = s.length-1
+
+    while(i < j && s[i] === s[j]) {
+        i++
+        j--
+    }
+
+    if (isPalindrome(i+1, j)) {
+        return true
+    }
+
+    if (isPalindrome(i, j-1)) {
+        return  true
+    }
+
+    return false
+
+}
