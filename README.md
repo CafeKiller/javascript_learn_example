@@ -11,4 +11,5 @@ I study the project, update with the situation
 |:-----------------|:----------------|:---------|
 | mmo-rpg          | TS+Nodejs游戏后台项目 | 暂时搁置     |
 | comment-app      | ReactJS练手项目     | 暂时搁置     |
+| make-redux      | 原生JS仿 Redux     | 已完成     |
 | cafe-handwriting | 手撕各种JS源码        | 持续输出中... |
