@@ -3,27 +3,28 @@ import PropTypes from "prop-types"
 import { createRoot } from 'react-dom/client';
 import Header from './Header';
 import Content from './Content';
+import { Provider } from "./react-redux"
 
 function createStore (reducer) {
   let state = null
-  // ¼àÌýÊý×é
+  // ç›‘å¬æ•°ç»„
   const listeners = []
-  // ÏûÏ¢¶©ÔÄ´¦Àí
+  // æ¶ˆæ¯è®¢é˜…å¤„ç†
   const subscribe = (listener) => listeners.push(listener)
-  // »ñÈ¡×´Ì¬
+  // èŽ·å–çŠ¶æ€
   const getState = () => state
-  // ×´Ì¬´¦Àí
+  // çŠ¶æ€å¤„ç†
   const dispatch = (action) => {
-    // Ã¿´ÎÐÞ¸ÄºóµÄÊý¾Ý¶¼²»Í¬ÁË, ÐèÒª½øÐÐ¸²¸Ç´¦Àí
+    // æ¯æ¬¡ä¿®æ”¹åŽçš„æ•°æ®éƒ½ä¸åŒäº†, éœ€è¦è¿›è¡Œè¦†ç›–å¤„ç†
     state = reducer(state, action) 
-    // ±éÀúÔËÐÐ ¶©ÔÄµÄÂß¼­´¦Àí
+    // éåŽ†è¿è¡Œ è®¢é˜…çš„é€»è¾‘å¤„ç†
     listeners.forEach((listener)=> listener())
   }
-  // ³õÊ¼»¯ store
+  // åˆå§‹åŒ– store
   dispatch({})
   return { getState, dispatch, subscribe }
 }
-// theme ´¦Àíº¯Êý
+// theme å¤„ç†å‡½æ•°
 const themeRender = (state, action) => {
   if (!state) return {
     themeColor: "Orange",
@@ -40,15 +41,6 @@ const store = createStore(themeRender)
 
 class Index extends Component {
   
-  static childContextTypes = {
-    store: PropTypes.object
-  }
-
-  // Ê¹ÓÃ context ´«µÝ×´Ì¬ store
-  getChildContext () {
-    return { store } 
-  }
-
   render () {
     return (
       <div>
@@ -65,6 +57,10 @@ class Index extends Component {
 // )
 
 const root = createRoot(document.getElementById('root'))
-root.render(<Index/>)
+root.render(
+  <Provider store={ store }>
+    <Index/>
+  </Provider>
+)
 
 
