@@ -2,33 +2,27 @@ import {Component} from "react";
 import PropTypes from "prop-types";
 
 // 用户输入组件
-class CommentInput extends Component {
+export default class CommentInput extends Component {
     static propTypes = {
-        onSubmit: PropTypes.func
+        username: PropTypes.any,
+        onSubmit: PropTypes.func,
+        onUserNameInputBlur: PropTypes.func,
     }
-    constructor() {
-        super();
+
+    static defaultProps = {
+        username: "",
+    }
+
+    constructor(props) {
+        super(props);
         this.state = {
-            username: "",
+            username: props.username,
             content: ""
         }
     }
     // 组件挂载完成
     componentDidMount() {
         this.textarea.focus()
-    }
-    componentWillMount () {
-        this._loadUsername()
-    }
-
-    _loadUsername() {
-        const username = localStorage.getItem("username")
-        if (username) {
-            this.setState({username: username})
-        }
-    }
-    _saveUsername(username){
-        localStorage.setItem("username", username)
     }
 
     handleUsernameChange(event) {
@@ -41,6 +35,12 @@ class CommentInput extends Component {
             content: event.target.value
         })
     }
+    handleUsernameBlur(event){
+        if (this.props.onUserNameInputBlur) {
+            this.props.onUserNameInputBlur(event.target.value)
+        }
+    }
+
     // 处理提交
     handleSubmit() {
         if (this.props.onSubmit) {
@@ -52,10 +52,7 @@ class CommentInput extends Component {
         }
         this.setState({content: ""})
     }
-    handleUsernameBlur(event){
-        this._saveUsername(event.target.value)
-    }
-
+    
     render() {
         return (
             <div className="comment-input">
@@ -85,5 +82,3 @@ class CommentInput extends Component {
         )
     }
 }
-
-export default CommentInput
