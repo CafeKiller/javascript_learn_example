@@ -3,6 +3,7 @@
   <div class="wrapper">
       <IndexView v-if="state.showNavRouter === 'index'"/>
       <LoginView v-if="state.showNavRouter === 'login'" @updateNav="dispatchNav"/>
+      <RegisterView v-if="state.showNavRouter === 'register'" @updateNav="dispatchNav" />
   </div>
 </template>
 
@@ -10,12 +11,15 @@
 import HeaderView from './views/HeaderView.vue'
 import IndexView from "@/views/IndexView.vue";
 import LoginView from "@/views/LoginView.vue";
-import {reactive} from "vue";
+import RegisterView from "@/views/RegisterView.vue";
+
+import { reactive } from "vue";
+
 
 const showHeaderArr = ["login", "register"]
 let state = reactive({
     showNavRouter: "index",
-    isShowHeader: true
+    isShowHeader: true,
 })
 
 function dispatchNav (data) {
