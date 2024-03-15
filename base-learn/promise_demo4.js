@@ -44,3 +44,13 @@ run().then((value)=>{
 }).catch((error)=>{
     console.error(error);
 })
+
+function run_2() {
+    return Promise.all([requestObj.comment(), requestObj.people()])
+}
+
+run_2().then((value)=>{
+    console.log(value);
+}).catch((error)=>{
+    console.error(error);
+})
