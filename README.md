@@ -7,9 +7,13 @@ I study the project, update with the situation
 - CreateTime: 2023_10_29 15:11:35
 - Author: CoffeeKiller
 
-| DirName          | Description     | State    |
-|:-----------------|:----------------|:---------|
-| mmo-rpg          | TS+Nodejs游戏后台项目 | 暂时搁置     |
-| comment-app      | ReactJS练手项目     | 暂时搁置     |
-| make-redux      | 原生JS仿 Redux     | 已完成     |
-| cafe-handwriting | 手撕各种JS源码        | 持续输出中... |
+| DirName              | Description                  | State       |
+|:---------------------|:-----------------------------|:------------|
+| base-learn           | basic exercises              | updating... |
+| mmo-rpg              | TS+Node game backstage       | pause       |
+| comment-app          | ReactJS  exercises           | done        |
+| make-redux           | original JS imitations Redux | done        |
+| mimic-react-redux    | imitations React Redux       | done        |
+| put_prayers          | Pet Heaven Vue version       | updating... |
+| gsap-scroll-example  | react + gsap  exercises      | updating... |
+| cafe-handwriting     | handwriting JS source code   | updating... |
