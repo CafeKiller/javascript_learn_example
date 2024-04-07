@@ -14,6 +14,6 @@ I study the project, update with the situation
 | comment-app          | ReactJS  exercises           | done        |
 | make-redux           | original JS imitations Redux | done        |
 | mimic-react-redux    | imitations React Redux       | done        |
+| gsap-scroll-example  | react + gsap  exercises      | done        |
 | put_prayers          | Pet Heaven Vue version       | updating... |
-| gsap-scroll-example  | react + gsap  exercises      | updating... |
 | cafe-handwriting     | handwriting JS source code   | updating... |
