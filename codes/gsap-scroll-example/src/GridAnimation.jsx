@@ -22,10 +22,10 @@ function GridAnimation() {
 			<main>
 				<div className="intro">
 					<h1 className="intro__title">
-						<span className="intro__title-pre">Cafe-Scroll</span>
-						<span className="intro__title-sub">Perspective Grid Animations</span>
+						<span className="intro__title-pre">GSAP - SCROLL</span>
+						<span className="intro__title-sub">透视 网格 动画</span>
 					</h1>
-					<span className="intro__info">Scroll moderately to fully experience the animations</span>
+					<span className="intro__info">适 度 滚 动 ， 充 分 体 验 动 画 效 果</span>
 				</div>
 
 				{

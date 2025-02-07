@@ -14,7 +14,7 @@ export const chooseAnimation = (animationType, grid) => {
         scrollTrigger: {
             trigger: gridWrap,
             start: 'top bottom+=5%',
-            end: 'bottom top-=5%',
+            end: 'bottom top+=5%',
             scrub: true,
         }
     })

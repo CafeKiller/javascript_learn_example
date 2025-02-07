@@ -5,8 +5,8 @@ const gridAnimationConfig = [
 		h3ClassName: 'content__title--right content__title--top',
 		children: (
 			<>
-				{'Fleeting moments,'} <br />
-				{`existence's dance.`}
+				{'稍纵即逝的瞬间,'} <br />
+				{`存在的舞蹈.`}
 			</>
 		),
 	},

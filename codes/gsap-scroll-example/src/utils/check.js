@@ -1,5 +1,7 @@
 export const supportsCssVars = function() {
 
+    // 检查当前浏览器是否支持 CSS 变量。
+
     /**
      * 设置页面支持 JavaScript 的标志：
      * document.documentElement.className = 'js' 将网页的根元素的 className 属性设置为 'js'，
@@ -13,7 +15,7 @@ export const supportsCssVars = function() {
     _html.innerHTML = 'root: {--tmp-var: bold;}'
     document.head.append(_html)
     
-    // isSupport储存是否支持（boolean） 判断window.CSS是否支持这个css规则并转化为boolean (!!)
+    // isSupport储存是否支持（boolean） 判断 window.CSS 是否支持这个 css 规则并转化为boolean (!!)
     const isSupport = !!(
         window.CSS &&
         window.CSS.supports &&

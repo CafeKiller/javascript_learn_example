@@ -26,17 +26,17 @@
               <div class="data-item">
                   <n-icon size="20" color="#18a058" depth="3" :component="People" />
                   当前会员数:
-                  <n-number-animation ref="numberAnimationInstRef" :duration="7000" :from="0" :to="2481" />
+                  <n-number-animation ref="numberAnimationInstRef" :duration="3000" :from="0" :to="2481" />
               </div>
               <div class="data-item">
                   <n-icon size="20" color="#18a058" depth="3" :component="Happy" />
                   当前纪念馆:
-                  <n-number-animation ref="numberAnimationInstRef" :duration="7000" :from="0" :to="1032" />
+                  <n-number-animation ref="numberAnimationInstRef" :duration="3000" :from="0" :to="1032" />
               </div>
               <div class="data-item">
                   <n-icon size="20" color="#18a058" depth="3" :component="LogoYen" />
                   当前交易数:
-                  <n-number-animation ref="numberAnimationInstRef" :duration="7000" :from="0" :to="1832" />
+                  <n-number-animation ref="numberAnimationInstRef" :duration="3000" :from="0" :to="1832" />
               </div>
               <div class="data-item">
                   <n-icon size="20" color="#18a058" depth="3" :component="HourglassOutline" />

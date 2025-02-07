@@ -42,7 +42,7 @@
 
 **evajs-example**
 
-> 学习 evajs 时用到的源代码。
+> 学习 evajs 时用到的源代码。evajs (开发者似乎转战另一个 hilo3d 项目了) 已经很久没有更新了，这些代码也不是我自己手敲的。
 
 **graphql-example**
 
