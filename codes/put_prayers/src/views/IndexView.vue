@@ -5,20 +5,20 @@
           <div class="rollover">
               <n-carousel autoplay draggable show-arrow>
                   <img
-                          class="rollover-img"
-                          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
+                        class="rollover-img"
+                        src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
                   >
                   <img
-                          class="rollover-img"
-                          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
+                        class="rollover-img"
+                        src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
                   >
                   <img
-                          class="rollover-img"
-                          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
+                        class="rollover-img"
+                        src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
                   >
                   <img
-                          class="rollover-img"
-                          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
+                        class="rollover-img"
+                        src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
                   >
               </n-carousel>
           </div>
